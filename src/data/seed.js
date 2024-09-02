@@ -3,7 +3,7 @@ function generateVoteCount() {
     return Math.floor(Math.random() * 151) + 50;
 }
 
-export const products = [
+export const Seed = [
     {
         id: 1,
         title: "Produto A",
