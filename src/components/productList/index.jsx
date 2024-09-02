@@ -4,13 +4,6 @@ import {Seed} from '../../data/seed'
 
 export const ProductList = () => {
 
-    const [products,setProducts] = useState([])
-    
-
-   const  handleProductUpVote = (productId) => {
-
-        console.log(productId +"was upvoted.");
-    }
 
     useEffect(() =>{
         const seed = Seed.sort((a,b) =>(
@@ -18,7 +11,27 @@ export const ProductList = () => {
         ));
 
         setProducts(seed);
-    },[])
+    },[]);
+
+    const [products,setProducts] = useState([])
+    
+
+   const  handleProductUpVote = (productId) => {
+
+        const nextProduct = products.map((product) =>{
+            if(product.id === productId){
+                return Object.assign({},product,{
+                    votes: product.votes + 1,
+                });
+            }else {
+                return product
+            }
+        });
+
+        setProducts(nextProduct);
+    }
+
+    
 
 
   return (
